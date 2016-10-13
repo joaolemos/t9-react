@@ -1,0 +1,11 @@
+{
+  "name": "t9-react",
+  "version": "0.0.1",
+  "description": "Example phone app that implements T9 text, using React and a NodeJS backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joao Lemos",
+  "license": "ISC"
+}
