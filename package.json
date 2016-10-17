@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "start-server": "babel-node server",
-    "production": "webpack -p"
+    "production": "webpack -p",
+    "test": "mocha --compilers js:babel-core/register ./test/utils.jsx"
   },
   "author": "Joao Lemos",
   "license": "ISC",
@@ -18,10 +19,12 @@
     "babel-preset-react": "^6.16.0",
     "express": "^4.14.0",
     "html-webpack-plugin": "^2.22.0",
+    "mocha": "^3.1.2",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   }
