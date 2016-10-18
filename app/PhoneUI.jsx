@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 
-export default class PhoneUI extends React.Component {
+class PhoneUI extends Component {
   render() {
     return (
       <div>
-        
+          Hello ReactJS skeleton
       </div>
     )
   }
 }
+
+PhoneUI.propTypes = {
+
+}
+
+export default PhoneUI;
