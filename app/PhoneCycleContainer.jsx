@@ -14,7 +14,11 @@ class PhoneCycleContainer extends Component {
     return (
       <Paper zDepth={1}>
         <div style={row}>
-          <RaisedButton label="Cycle" style={{ margin: '20px' }} />
+          <RaisedButton 
+            label="Cycle"
+            style={{ margin: '20px' }}
+            onClick={this.props.onSelectedOptionChange}
+          />
         </div>
       </Paper>
     )

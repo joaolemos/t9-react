@@ -28,7 +28,11 @@ class PhoneUI extends Component {
   }
 
   handleSelectedOptionChange() {
-
+    let selectedInputOption = this.state.selectedInputOption;
+    selectedInputOption = (++selectedInputOption % this.state.currentInputTextOptions.length);
+    this.setState({
+      selectedInputOption : selectedInputOption
+    });
   }
 
   updateTextArea(currentInputNumber, newNumber) {
