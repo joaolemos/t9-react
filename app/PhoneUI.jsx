@@ -19,17 +19,33 @@ class PhoneUI extends Component {
     }
     this.handleInputNumberChange = this.handleInputNumberChange.bind(this);
     this.handleSelectedOptionChange = this.handleSelectedOptionChange.bind(this);
+    this.updateTextArea = this.updateTextArea.bind(this);
   }
 
   handleInputNumberChange(newNumber) {
     const currentInputNumber = this.state.currentInputNumber;
-    this.setState({
-      currentInputNumber : currentInputNumber + newNumber
-    });
+    this.updateTextArea(currentInputNumber, newNumber);
   }
 
   handleSelectedOptionChange() {
 
+  }
+
+  updateTextArea(currentInputNumber, newNumber) {
+    if(newNumber === 0) {
+      // Terminate sequence
+
+    } else {
+      // Get list of possibilities from the backend
+      axios.post('/api/search', {
+        "word" : currentInputNumber + newNumber
+      }).then(function(response) {
+        this.setState({
+          currentInputNumber: currentInputNumber + newNumber,
+          currentInputTextOptions: response.data.res
+        })
+      }.bind(this))
+    }
   }
 
   render() {
@@ -37,11 +53,14 @@ class PhoneUI extends Component {
       maxWidth: '400px'
     }
 
+    const currentInputText = this.state.currentInputTextOptions[this.state.selectedInputOption] || "";
+
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
         <div style={containerStyle} >
           <AppBar title="T9 React" showMenuIconButton={false} />
-          <PhoneTextArea inputText={this.state.currentInputNumber} />
+          <PhoneTextArea 
+            inputText={currentInputText} />
           <PhoneCycleContainer 
             onSelectedOptionChange={this.handleSelectedOptionChange} />
           <PhoneKeyboard 

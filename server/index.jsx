@@ -8,11 +8,11 @@ let trie = utils.init('server/words.txt');
 
 app.use(bodyParser.json());
 
-app.get('/', (request, response) => {
+app.get('/api', (request, response) => {
   response.send('Hello world from Express');
 });
 
-app.post('/search', function(req, res) {
+app.post('/api/search', function(req, res) {
   let num = req.body.word;
   let result = utils.searchString(trie, num);
   res.send({

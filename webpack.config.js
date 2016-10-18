@@ -13,6 +13,11 @@ module.exports = {
     path: __dirname + '/dist',
     filename: "index_bundle.js"
   },
+  devServer: {
+    proxy: {
+      '/api/*': 'http://localhost:3000'
+    }
+  },
   module: {
     loaders: [
       {
