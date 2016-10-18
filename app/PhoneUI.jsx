@@ -6,8 +6,32 @@ import PhoneTextArea from './PhoneTextArea.jsx';
 import PhoneKeyboard from './PhoneKeyboard.jsx';
 import PhoneCycleContainer from './PhoneCycleContainer.jsx';
 import AppBar from 'material-ui/AppBar';
+import axios from 'axios';
 
 class PhoneUI extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentInputTextOptions : [],
+      selectedInputOption : 0,
+      currentInputNumber : "",
+      finalText: ""
+    }
+    this.handleInputNumberChange = this.handleInputNumberChange.bind(this);
+    this.handleSelectedOptionChange = this.handleSelectedOptionChange.bind(this);
+  }
+
+  handleInputNumberChange(newNumber) {
+    const currentInputNumber = this.state.currentInputNumber;
+    this.setState({
+      currentInputNumber : currentInputNumber + newNumber
+    });
+  }
+
+  handleSelectedOptionChange() {
+
+  }
+
   render() {
     const containerStyle = {
       maxWidth: '400px'
@@ -17,9 +41,11 @@ class PhoneUI extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
         <div style={containerStyle} >
           <AppBar title="T9 React" showMenuIconButton={false} />
-          <PhoneTextArea />
-          <PhoneCycleContainer />
-          <PhoneKeyboard />
+          <PhoneTextArea inputText={this.state.currentInputNumber} />
+          <PhoneCycleContainer 
+            onSelectedOptionChange={this.handleSelectedOptionChange} />
+          <PhoneKeyboard 
+            onPhoneButtonClick={this.handleInputNumberChange} />
         </div>
       </MuiThemeProvider>
     )

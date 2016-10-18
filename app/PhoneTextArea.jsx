@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 
-class PhoneTextArea extends React.Component {
+class PhoneTextArea extends Component {
   render() {
     const style = {
       margin: '20px',
@@ -21,16 +21,22 @@ class PhoneTextArea extends React.Component {
         <div style={row}>
           <TextField
             id="mainTextArea"
+            disabled={true}
             multiLine={true}
             underlineShow={false}
             type="number"
             style={style}
             rows={4}
-            rowsMax={8} />
+            rowsMax={8} 
+            value={this.props.inputText} />
         </div>
       </Paper>
     )
   }
+}
+
+PhoneTextArea.propTypes = {
+  inputText: PropTypes.string.isRequired
 }
 
 export default PhoneTextArea;
