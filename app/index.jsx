@@ -1,12 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { PhoneUI } from './PhoneUI';
 
-class Hello extends React.Component {
-  render() {
-    return (
-      <div>Hello ReactJS Skeleton!</div>
-    )
-  }
-}
-
-ReactDOM.render(<Hello />, document.getElementById('app'));
+ReactDOM.render(<PhoneUI />, document.getElementById('app'));
