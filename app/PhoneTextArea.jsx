@@ -16,7 +16,6 @@ class PhoneTextArea extends Component {
       justifyContent: 'center'
     }
 
-    
     let finalText;
     if(this.props.previousText != "") {
       finalText = this.props.previousText + " " + this.props.inputText

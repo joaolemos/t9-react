@@ -15,7 +15,7 @@ class PhoneUI extends Component {
       currentInputTextOptions : [],
       selectedInputOption : 0,
       currentInputNumber : "",
-      finalText: ""
+      previousText: ""
     }
     this.handleInputNumberChange = this.handleInputNumberChange.bind(this);
     this.handleSelectedOptionChange = this.handleSelectedOptionChange.bind(this);
@@ -39,17 +39,17 @@ class PhoneUI extends Component {
     if(newNumber === "0") {
       // Terminate sequence
       let currentSeq = this.state.currentInputTextOptions[this.state.selectedInputOption];
-      let finalText;
-      if(this.state.finalText != "") {
-        finalText = this.state.finalText + " " + currentSeq;
+      let previousText;
+      if(this.state.previousText != "") {
+        previousText = this.state.previousText + " " + currentSeq;
       } else {
-        finalText = currentSeq;
+        previousText = currentSeq;
       }
       this.setState({
         currentInputNumber: "",
         selectedInputOption: 0,
         currentInputTextOptions: [],
-        finalText: finalText
+        previousText: previousText
       })
     } else {
       // Get list of possibilities from the backend
@@ -76,7 +76,7 @@ class PhoneUI extends Component {
         <div style={containerStyle} >
           <AppBar title="T9 React" showMenuIconButton={false} />
           <PhoneTextArea 
-            previousText={this.state.finalText}
+            previousText={this.state.previousText}
             inputText={currentInputText} />
           <PhoneCycleContainer 
             onSelectedOptionChange={this.handleSelectedOptionChange} />
