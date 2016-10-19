@@ -16,6 +16,15 @@ class PhoneTextArea extends Component {
       justifyContent: 'center'
     }
 
+    
+    let finalText;
+    if(this.props.previousText != "") {
+      finalText = this.props.previousText + " " + this.props.inputText
+    }
+    else {
+      finalText = this.props.inputText
+    }
+
     return (
       <Paper zDepth={1}>
         <div style={row}>
@@ -28,7 +37,7 @@ class PhoneTextArea extends Component {
             style={style}
             rows={4}
             rowsMax={8} 
-            value={this.props.inputText} />
+            value={finalText} />
         </div>
       </Paper>
     )
@@ -36,6 +45,7 @@ class PhoneTextArea extends Component {
 }
 
 PhoneTextArea.propTypes = {
+  previousText: PropTypes.string.isRequired,
   inputText: PropTypes.string.isRequired
 }
 

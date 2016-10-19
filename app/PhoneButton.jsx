@@ -17,18 +17,22 @@ class PhoneButton extends Component {
     };
 
     return (
-      <RaisedButton 
-        label={this.props.num} 
-        style={style} 
-        onClick={this.onButtonClick}
-      />
+      <div>
+        <RaisedButton 
+          label={this.props.text} 
+          style={style} 
+          onClick={this.onButtonClick}
+        >
+          {this.props.num}
+        </RaisedButton>
+      </div>
     )
   }
 
 }
 
 PhoneButton.propTypes = {
-  num: PropTypes.number.isRequired,
+  num: PropTypes.string.isRequired,
   handleNumBtnClick: PropTypes.func.isRequired,
   text: PropTypes.string
 }

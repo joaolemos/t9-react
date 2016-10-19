@@ -36,9 +36,21 @@ class PhoneUI extends Component {
   }
 
   updateTextArea(currentInputNumber, newNumber) {
-    if(newNumber === 0) {
+    if(newNumber === "0") {
       // Terminate sequence
-
+      let currentSeq = this.state.currentInputTextOptions[this.state.selectedInputOption];
+      let finalText;
+      if(this.state.finalText != "") {
+        finalText = this.state.finalText + " " + currentSeq;
+      } else {
+        finalText = currentSeq;
+      }
+      this.setState({
+        currentInputNumber: "",
+        selectedInputOption: 0,
+        currentInputTextOptions: [],
+        finalText: finalText
+      })
     } else {
       // Get list of possibilities from the backend
       axios.post('/api/search', {
@@ -64,6 +76,7 @@ class PhoneUI extends Component {
         <div style={containerStyle} >
           <AppBar title="T9 React" showMenuIconButton={false} />
           <PhoneTextArea 
+            previousText={this.state.finalText}
             inputText={currentInputText} />
           <PhoneCycleContainer 
             onSelectedOptionChange={this.handleSelectedOptionChange} />
@@ -73,10 +86,6 @@ class PhoneUI extends Component {
       </MuiThemeProvider>
     )
   }
-}
-
-PhoneUI.propTypes = {
-
 }
 
 export default PhoneUI;
