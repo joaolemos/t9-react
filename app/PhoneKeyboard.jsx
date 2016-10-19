@@ -14,7 +14,7 @@ class PhoneKeyboard extends Component {
     return (
       <Paper zDepth={1} >
         <div style={row}>
-          <PhoneButton num={"1"} text={""} handleNumBtnClick={this.props.onPhoneButtonClick} />
+          <PhoneButton num={"1"} text={"space"} handleNumBtnClick={this.props.onPhoneButtonClick} />
           <PhoneButton num={"2"} text={"abc"} handleNumBtnClick={this.props.onPhoneButtonClick} />
           <PhoneButton num={"3"} text={"def"} handleNumBtnClick={this.props.onPhoneButtonClick} />
         </div>
@@ -27,9 +27,6 @@ class PhoneKeyboard extends Component {
           <PhoneButton num={"7"} text={"pqrs"} handleNumBtnClick={this.props.onPhoneButtonClick} />
           <PhoneButton num={"8"} text={"tuv"}  handleNumBtnClick={this.props.onPhoneButtonClick} />
           <PhoneButton num={"9"} text={"wxyz"} handleNumBtnClick={this.props.onPhoneButtonClick} />
-        </div>
-        <div style={row}>
-          <PhoneButton num={"0"} text={"space"} handleNumBtnClick={this.props.onPhoneButtonClick} />
         </div>
       </Paper>
     )

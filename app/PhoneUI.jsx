@@ -36,7 +36,7 @@ class PhoneUI extends Component {
   }
 
   updateTextArea(currentInputNumber, newNumber) {
-    if(newNumber === "0") {
+    if(newNumber === "1") {
       // Terminate sequence
       let currentSeq = this.state.currentInputTextOptions[this.state.selectedInputOption];
       let previousText;
